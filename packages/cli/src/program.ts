@@ -202,7 +202,7 @@ export function createProgram(): Command {
     return { global, cfg };
   };
 
-  program
+  const proposals = program
     .command("proposals")
     .description("Proposal commands")
     .addCommand(
@@ -292,6 +292,7 @@ export function createProgram(): Command {
           output({ proposalId }, global);
         }),
     );
+  registerProposalAmendments(proposals, context);
 
   const vote = program
     .command("vote")
